@@ -1,0 +1,33 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#                                                       :+:      :+:    :+:    #
+#    .gitignore                                       +:+ +:+         +:+      #
+#                                                   +#+  +:+       +#+         #
+#    By: troberts <troberts@student.42.fr>        +#+#+#+#+#+   +#+            #
+#                                                      #+#    #+#              #
+#                                                     ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Default rules
+*.out
+*.swp
+*.gch
+*.o
+*.code-workspace
+.DS_Store
+.vscode
+.devcontainer
+obj/
+*.a
+*.log
+
+# Specific files
+test.c
+push_swap
+checker
+debug
+
+# Specific folders
+tester
