@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 20:36:04 by troberts          #+#    #+#             */
-/*   Updated: 2022/07/15 21:06:09 by troberts         ###   ########.fr       */
+/*   Updated: 2022/07/15 14:28:56 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ char	**get_array(int ac, char **av)
 		array = get_array_single_arg(av[1]);
 	else
 		array = get_array_multiple_args(ac, av);
-	return(array);
+	return (array);
 }
 
 int	*convert_array_to_int(char **array)
 {
-	int	*array_int;
+	int				*array_int;
 	unsigned int	i;
 	unsigned int	size;
 
@@ -39,7 +39,7 @@ int	*convert_array_to_int(char **array)
 		array_int[i] = ft_atoi(array[i]);
 		i++;
 	}
-	return(array_int);
+	return (array_int);
 }
 
 char	**get_array_single_arg(char *av)
