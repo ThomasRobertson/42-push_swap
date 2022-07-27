@@ -6,7 +6,7 @@
 #    By: troberts <troberts@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 01:33:16 by troberts          #+#    #+#              #
-#    Updated: 2022/07/15 13:39:31 by troberts         ###   ########.fr        #
+#    Updated: 2022/07/26 21:56:44 by troberts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,9 @@
 # **************************************************************************** #
 
 NAME= push_swap
+NAME_BONUS= checker
 
-# CC= cc
+CC= gcc
 # CFLAGS= -Wall -Wextra -Werror -I $(INCLUDES)
 CFLAGS= -Wall -Wextra -Werror -g -I $(INCLUDES)
 
@@ -31,22 +32,38 @@ SRC_DIR= src/
 # **************************************************************************** #
 
 SRC_FILE=	\
+			chose_rr_or_r.c	\
+			main.c	\
+			more_three_number.c	\
+			under_three_number.c
+
+SRC_COMMON_FILE= \
 			chained_list.c	\
 			check_args.c	\
 			check_sort.c	\
+			fill_array.c	\
 			fill_chained_list.c	\
 			get_array.c	\
-			main.c	\
 			push.c	\
 			reverse_rotate.c	\
 			rotate.c	\
 			swap.c	\
-			under_three_number.c	\
 			utils.c
+
+SRC_BONUS_FILE= \
+			checker_main.c
 
 SRC=		$(addprefix $(SRC_DIR), $(SRC_FILE))
 OBJ_FILE= 	$(SRC_FILE:.c=.o)
 OBJ=		$(addprefix $(OBJ_DIR), $(OBJ_FILE))
+
+SRC_COMMON=		$(addprefix $(SRC_DIR), $(SRC_COMMON_FILE))
+OBJ_COMMON_FILE= $(SRC_COMMON_FILE:.c=.o)
+OBJ_COMMON=		$(addprefix $(OBJ_DIR), $(OBJ_COMMON_FILE))
+
+SRC_BONUS=		$(addprefix $(SRC_DIR), $(SRC_BONUS_FILE))
+OBJ_BONUS_FILE= $(SRC_BONUS_FILE:.c=.o)
+OBJ_BONUS=		$(addprefix $(OBJ_DIR), $(OBJ_BONUS_FILE))
 
 #OBJ=	$(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
@@ -122,12 +139,19 @@ HEADER_EXITLIB =	@echo "${COLOR_GREEN}\
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT_LIB)
+$(NAME): $(LIBFT_LIB) $(OBJ) $(OBJ_COMMON)
 	$(HEADER)
 	$(HEADER_COMPIL)
-	$(CC) $(CFLAGS) -o $@ $(OBJ) $(LIBFT_LIB)
+	$(CC) $(CFLAGS) -o $@ $(OBJ) $(OBJ_COMMON) $(LIBFT_LIB)
 
 $(LIBFT_LIB): makelibf ;
+
+bonus: $(NAME_BONUS)
+
+$(NAME_BONUS): $(LIBFT_LIB) $(OBJ_COMMON) $(OBJ_BONUS)
+	$(HEADER)
+	$(HEADER_COMPIL)
+	$(CC) $(CFLAGS) -o $@ $(OBJ_COMMON) $(OBJ_BONUS) $(LIBFT_LIB)
 
 makelibf :
 	$(HEADER_ENTERLIB)
@@ -136,10 +160,20 @@ makelibf :
 
 $(OBJ): | $(OBJ_DIR)
 
+$(OBJ_BONUS): | $(OBJ_DIR)
+
+$(OBJ_COMMON): | $(OBJ_DIR)
+
 $(OBJ_DIR):
 	mkdir -p $@
 
 $(OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_COMMON): $(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_BONUS): $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 header:
@@ -147,7 +181,7 @@ header:
 
 cleanobj:
 	${HEADER_CLEAN}
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(OBJ_BONUS) $(OBJ_COMMON)
 
 cleanobjdir: cleanobj
 	rm -rf $(OBJ_DIR)
@@ -163,7 +197,7 @@ fcleanlibft:
 
 fclean: header clean fcleanlibft
 	${HEADER_FCLEAN}
-	rm -f $(NAME)
+	rm -f $(NAME) $(NAME_BONUS)
 
 re: header fclean all
 

@@ -28,6 +28,11 @@ test.c
 push_swap
 checker
 debug
+pswapviz.py
+args.txt
+res*.txt
 
 # Specific folders
 tester
+push_swap_visualizer
+push_swap_viz_kivy

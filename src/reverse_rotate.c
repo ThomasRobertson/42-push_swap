@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 12:39:37 by troberts          #+#    #+#             */
-/*   Updated: 2022/07/15 04:25:29 by troberts         ###   ########.fr       */
+/*   Updated: 2022/07/27 02:52:39 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static void	reverse_rotate(t_list **stack)
 {
 	t_list	*node;
 
+	if (*stack == NULL || stack == NULL)
+		return ;
 	node = *stack;
 	while (node->next->next != NULL)
 		node = node->next;
@@ -23,21 +25,28 @@ static void	reverse_rotate(t_list **stack)
 	node->next = NULL;
 }
 
-void	rra(t_list **stack_a)
+void	rra(t_list **stack_a, t_bool silent)
 {
-	reverse_rotate(stack_a);
-	ft_putendl("rra");
+	if (*stack_a)
+		reverse_rotate(stack_a);
+	if (!silent)
+		ft_putendl("rra");
 }
 
-void	rrb(t_list **stack_b)
+void	rrb(t_list **stack_b, t_bool silent)
 {
-	reverse_rotate(stack_b);
-	ft_putendl("rrb");
+	if (*stack_b)
+		reverse_rotate(stack_b);
+	if (!silent)
+		ft_putendl("rrb");
 }
 
-void	rrr(t_list **stack_a, t_list **stack_b)
+void	rrr(t_list **stack_a, t_list **stack_b, t_bool silent)
 {
-	reverse_rotate(stack_a);
-	reverse_rotate(stack_b);
-	ft_putendl("rrr");
+	if (stack_a)
+		reverse_rotate(stack_a);
+	if (stack_b)
+		reverse_rotate(stack_b);
+	if (!silent)
+		ft_putendl("rrr");
 }

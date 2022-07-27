@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 09:20:43 by troberts          #+#    #+#             */
-/*   Updated: 2022/07/15 07:24:11 by troberts         ###   ########.fr       */
+/*   Updated: 2022/07/27 02:53:01 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void	swap(t_list **stack)
 	t_list	*node;
 	t_list	*third_node;
 
+	if (stack == NULL)
+		return ;
 	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
 	node = *stack;
@@ -27,21 +29,24 @@ static void	swap(t_list **stack)
 	return ;
 }
 
-void	sa(t_list **stack_a)
+void	sa(t_list **stack_a, t_bool silent)
 {
 	swap(stack_a);
-	ft_putendl("sa");
+	if (!silent)
+		ft_putendl("sa");
 }
 
-void	sb(t_list **stack_b)
+void	sb(t_list **stack_b, t_bool silent)
 {
 	swap(stack_b);
-	ft_putendl("sb");
+	if (!silent)
+		ft_putendl("sb");
 }
 
-void	ss(t_list **stack_a, t_list **stack_b)
+void	ss(t_list **stack_a, t_list **stack_b, t_bool silent)
 {
 	swap(stack_a);
 	swap(stack_b);
-	ft_putendl("ss");
+	if (!silent)
+		ft_putendl("ss");
 }

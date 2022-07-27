@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 09:59:01 by troberts          #+#    #+#             */
-/*   Updated: 2022/07/12 10:54:55 by troberts         ###   ########.fr       */
+/*   Updated: 2022/07/27 03:16:37 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,20 @@ static void	push(t_list **stack_from, t_list **stack_to)
 		return ;
 	node = *stack_from;
 	*stack_from = (*stack_from)->next;
+	node->next = NULL;
 	ft_lstadd_front(stack_to, node);
 }
 
-void	pa(t_list **stack_a, t_list **stack_b)
+void	pa(t_list **stack_a, t_list **stack_b, t_bool silent)
 {
 	push(stack_b, stack_a);
-	ft_putendl("pa");
+	if (!silent)
+		ft_putendl("pa");
 }
 
-void	pb(t_list **stack_a, t_list **stack_b)
+void	pb(t_list **stack_a, t_list **stack_b, t_bool silent)
 {
 	push(stack_a, stack_b);
-	ft_putendl("pb");
+	if (!silent)
+		ft_putendl("pb");
 }

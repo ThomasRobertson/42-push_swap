@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 09:15:25 by troberts          #+#    #+#             */
-/*   Updated: 2022/07/15 09:03:14 by troberts         ###   ########.fr       */
+/*   Updated: 2022/07/27 02:49:03 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_list	*sort_two(t_list **stack_a)
 {
 	if (is_stacks_sort(*stack_a, NULL))
 		return (*stack_a);
-	sa(stack_a);
+	sa(stack_a, false);
 	return (*stack_a);
 }
 
@@ -32,11 +32,11 @@ t_list	*sort_three(t_list **stack_a)
 		second = (*stack_a)->next->content;
 		third = (*stack_a)->next->next->content;
 		if (first->index > second->index && first->index > third->index)
-			ra(stack_a);
+			ra(stack_a, false);
 		else if (second->index > first->index && second->index > third->index)
-			rra(stack_a);
+			rra(stack_a, false);
 		else if (first->index > second->index)
-			sa(stack_a);
+			sa(stack_a, false);
 		else
 			exit_print("Couldn't sort three numbers.");
 	}
