@@ -6,11 +6,18 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:12:41 by troberts          #+#    #+#             */
-/*   Updated: 2022/07/15 14:29:22 by troberts         ###   ########.fr       */
+/*   Updated: 2022/07/26 16:42:34 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	display_error_message(char **array)
+{
+	ft_putendl_fd("Error", STDERR_FILENO);
+	free_double_ptr_char(array);
+	exit(EXIT_FAILURE);
+}
 
 static void	check_bigger_then_int(char **array)
 {
@@ -33,10 +40,7 @@ static void	check_bigger_then_int(char **array)
 		}
 		if (lenght > lenght_int || ft_atol(array[i]) > INT_MAX || \
 			ft_atol(array[i]) < INT_MIN)
-		{
-			ft_putendl_fd("Error", STDERR_FILENO);
-			exit (EXIT_FAILURE);
-		}
+			display_error_message(array);
 		i++;
 	}
 }
@@ -60,6 +64,7 @@ static void	check_duplicate(int *array, unsigned int size)
 		}
 		if (counter != 1)
 		{
+			free(array);
 			ft_putendl_fd("Error", STDERR_FILENO);
 			exit(EXIT_FAILURE);
 		}
@@ -78,16 +83,16 @@ static void	check_formats_args(char **array)
 		j = 0;
 		while (array[i][j])
 		{
-			if (ft_isdigit(array[i][j]) || ft_isspace(array[i][j]))
+			while (ft_isspace(array[i][j]))
 				j++;
-			else if ((array[i][j] == '+' || array[i][j] == '-') && \
-				(ft_isdigit(array[i][j + 1]) || ft_isspace(array[i][j + 1])))
+			if ((array[i][j] == '+' || array[i][j] == '-'))
 				j++;
-			else
-			{
-				ft_putendl_fd("Error", STDERR_FILENO);
-				exit(EXIT_FAILURE);
-			}
+			if (!ft_isdigit(array[i][j]))
+				display_error_message(array);
+			while (ft_isdigit(array[i][j]))
+				j++;
+			if (array[i][j] != '\0')
+				display_error_message(array);
 		}
 		i++;
 	}

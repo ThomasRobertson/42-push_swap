@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 17:08:34 by troberts          #+#    #+#             */
-/*   Updated: 2022/07/15 20:37:00 by troberts         ###   ########.fr       */
+/*   Updated: 2022/07/17 15:14:53 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static t_list	*create_node(int value)
 	node->value = value;
 	node->cost_a = -1;
 	node->cost_b = -1;
-	node->index = -1;
-	node->pos = -1;
-	node->target_pos = -1;
+	node->index = 0;
+	node->pos = 0;
+	node->target_pos = 0;
 	list->content = node;
 	list->next = NULL;
 	return (list);

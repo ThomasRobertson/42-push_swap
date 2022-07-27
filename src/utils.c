@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 20:11:03 by troberts          #+#    #+#             */
-/*   Updated: 2022/07/15 14:29:35 by troberts         ###   ########.fr       */
+/*   Updated: 2022/07/18 13:12:28 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ void	exit_print(char *str)
 	exit(EXIT_FAILURE);
 }
 
+long int	ft_abs(long int nbr)
+{
+	if (nbr < 0)
+		nbr = -nbr;
+	return (nbr);
+}
+
 void	free_double_ptr_char(char **arr_char)
 {
 	size_t	i;
@@ -29,4 +36,5 @@ void	free_double_ptr_char(char **arr_char)
 		free(arr_char[i]);
 		i++;
 	}
+	free(arr_char);
 }

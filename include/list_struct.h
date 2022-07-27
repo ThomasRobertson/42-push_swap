@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 17:50:18 by troberts          #+#    #+#             */
-/*   Updated: 2022/07/12 17:55:48 by troberts         ###   ########.fr       */
+/*   Updated: 2022/07/17 15:14:23 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 typedef struct s_stack
 {
 	int				value;
-	long int		index;
-	long int		pos;
-	long int		target_pos;
+	unsigned int	index;
+	unsigned int	pos;
+	unsigned int	target_pos;
 	long int		cost_a;
 	long int		cost_b;
 }					t_stack;
