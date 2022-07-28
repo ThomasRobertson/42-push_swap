@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 14:51:50 by troberts          #+#    #+#             */
-/*   Updated: 2022/07/26 10:27:29 by troberts         ###   ########.fr       */
+/*   Updated: 2022/07/28 16:22:07 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	target_pos_if_higher_index(t_list *stack_a, t_list *stack_b, \
 	{
 		if (stack_a->content->index < min_index)
 		{
-		min_index = stack_a->content->index;
-		stack_b->content->target_pos = stack_a->content->pos;
+			min_index = stack_a->content->index;
+			stack_b->content->target_pos = stack_a->content->pos;
 		}
 		stack_a = stack_a->next;
 	}
