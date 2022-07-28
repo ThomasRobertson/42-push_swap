@@ -43,20 +43,20 @@
 This project sort data using two stacks, using
 the lowest possible number of actions.
 
-> This project is part of 42 Paris' curiculum. You can check the full subject in the subject pdf included in this repos.
+> This project is part of 42 Paris' curriculum. You can check the full subject in the subject pdf included in this repo.
 
 ## How It Work
 
 To achieve that, the algorithm will first move every number to the second stack, called stack_b, except for three number still in the first stack, called stack_a.
 
-After sorting the remaining three numbers, it will calculate the cost for each number in stack_b to be added, and sorted, into the stack_a. It will always chose the number with the lowest cost. It will repeat this process until every number is sorted.
+After sorting the remaining three numbers, it will calculate the cost for each number in stack_b to be added, and sorted, into the stack_a. It will always choose the number with the lowest cost. It will repeat this process until every number is sorted.
 
 ## Target
 
 This program aim at 100% completion and has to sort different size of stack with a maximum number of actions :
 
-* 3 value : no more than 3 actions
-* 5 value : no more than 12 actions
+* 3 values : no more than 3 actions
+* 5 values : no more than 12 actions
 * 100 values : no more than 700 actions
 * 500 values : no more than 5 500 actions
 
