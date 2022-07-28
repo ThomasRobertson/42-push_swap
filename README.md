@@ -26,6 +26,10 @@
     <img src="https://img.shields.io/github/languages/top/ThomasRobertson/42-push_swap?style=flat-square"
          alt="License">
   </a>
+  <a href="https://github.com/ThomasRobertson/42-push_swap/actions/workflows/norminette-action.yml">
+    <img src="https://github.com/ThomasRobertson/42-push_swap/actions/workflows/norminette-action.yml/badge.svg"
+         alt="Norminette Action">
+  </a> 
 </p>
 
 <p align="center">
