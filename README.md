@@ -84,7 +84,7 @@ Bonus :
 Clone this GitHub repos
 
 ```bash
-git clone https://github.com/amitmerchant1990/electron-markdownify
+git clone https://github.com/ThomasRobertson/42-push_swap
 ```
 Use the provided Makefile to compile to program (using the system's cc)
 
