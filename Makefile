@@ -6,7 +6,7 @@
 #    By: troberts <troberts@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 01:33:16 by troberts          #+#    #+#              #
-#    Updated: 2022/07/26 21:56:44 by troberts         ###   ########.fr        #
+#    Updated: 2022/08/02 13:46:09 by troberts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,8 @@
 NAME= push_swap
 NAME_BONUS= checker
 
-CC= gcc
-# CFLAGS= -Wall -Wextra -Werror -I $(INCLUDES)
-CFLAGS= -Wall -Wextra -Werror -g -I $(INCLUDES)
+# CC= gcc
+CFLAGS= -Wall -Wextra -Werror -I $(INCLUDES)
 
 LIBFT_DIR= libft
 LIBFT_LIB= $(LIBFT_DIR)/libft.a
