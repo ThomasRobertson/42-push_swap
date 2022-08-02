@@ -11,23 +11,27 @@
 
 <p align="center">
   <a href="https://github.com/ThomasRobertson/42-push_swap">
-    <img src="https://img.shields.io/tokei/lines/github/ThomasRobertson/42-push_swap?style=flat-square"
+    <img src="https://tokei.rs/b1/github/ThomasRobertson/42-push_swap"
          alt="Line of Code">
   </a>
   <a href="https://github.com/ThomasRobertson/42-push_swap">
-    <img src="https://img.shields.io/github/languages/code-size/ThomasRobertson/42-push_swap?style=flat-square"
+    <img src="https://img.shields.io/github/languages/code-size/ThomasRobertson/42-push_swap"
          alt="Size">
   </a>
   <a href="https://github.com/ThomasRobertson/42-push_swap">
-    <img src="https://img.shields.io/github/license/ThomasRobertson/42-push_swap?style=flat-square"
+    <img src="https://img.shields.io/github/languages/top/ThomasRobertson/42-push_swap"
          alt="License">
   </a>
   <a href="https://github.com/ThomasRobertson/42-push_swap">
-    <img src="https://img.shields.io/github/languages/top/ThomasRobertson/42-push_swap?style=flat-square"
+    <img src="https://img.shields.io/github/license/ThomasRobertson/42-push_swap"
          alt="License">
   </a>
   <a href="https://github.com/ThomasRobertson/42-push_swap/actions/workflows/norminette-action.yml">
-    <img src="https://github.com/ThomasRobertson/42-push_swap/actions/workflows/norminette-action.yml/badge.svg"
+    <img src="https://github.com/ThomasRobertson/42-push_swap/workflows/Build/badge.svg"
+         alt="Norminette Action">
+  </a> 
+  <a href="https://github.com/ThomasRobertson/42-push_swap/actions/workflows/norminette-action.yml">
+    <img src="https://github.com/ThomasRobertson/42-push_swap/workflows/Norm Check/badge.svg"
          alt="Norminette Action">
   </a> 
 </p>
