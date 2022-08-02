@@ -1,9 +1,11 @@
+name: Norm Check
+
 on: [push, pull_request]
 
 jobs:
   norminette_job:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     name: norminette
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: alexandregv/norminette-action@v3
