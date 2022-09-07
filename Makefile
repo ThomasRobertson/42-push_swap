@@ -6,7 +6,7 @@
 #    By: troberts <troberts@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 01:33:16 by troberts          #+#    #+#              #
-#    Updated: 2022/08/02 13:46:09 by troberts         ###   ########.fr        #
+#    Updated: 2022/09/07 19:28:52 by troberts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME= push_swap
 NAME_BONUS= checker
 
 # CC= gcc
-CFLAGS= -Wall -Wextra -Werror -I $(INCLUDES)
+CFLAGS= -Wall -Wextra -Werror -g -I $(INCLUDES)
 
 LIBFT_DIR= libft
 LIBFT_LIB= $(LIBFT_DIR)/libft.a
@@ -142,6 +142,9 @@ $(NAME): $(LIBFT_LIB) $(OBJ) $(OBJ_COMMON)
 	$(HEADER)
 	$(HEADER_COMPIL)
 	$(CC) $(CFLAGS) -o $@ $(OBJ) $(OBJ_COMMON) $(LIBFT_LIB)
+
+malloc_test: $(LIBFT_LIB) $(OBJ) $(OBJ_COMMON)
+	$(CC) $(CFLAGS) -fsanitize=undefined -rdynamic -o $@ $(OBJ) $(OBJ_COMMON) $(LIBFT_LIB) -L. -lmallocator
 
 $(LIBFT_LIB): makelibf ;
 
