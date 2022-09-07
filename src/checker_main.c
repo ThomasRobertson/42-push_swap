@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 12:36:01 by troberts          #+#    #+#             */
-/*   Updated: 2022/07/27 11:37:49 by troberts         ###   ########.fr       */
+/*   Updated: 2022/09/07 20:25:34 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,34 +85,3 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	}
 }
-
-/* 
-static	void	ft_get_moves(char *s, t_stack *a, t_stack *b)
-{
-	(void)a;
-	(void)b;
-	if (ft_strcmp(s, "sa\n") == 0)
-		return ;
-}
-
-int	main()
-{
-	char	*s;
-	t_stack	*a;
-	t_stack	*b;
-
-	a = NULL;
-	b = NULL;
-	while (1)
-	{
-		s = get_next_line(0);
-		if (s == NULL)
-			break ;
-		ft_get_moves(s, a, b);
-		free(s);
-	}
-	if (1)
-		write(1, "OK\n", 3);
-	else
-		write(1, "KO\n", 3);
-} */
