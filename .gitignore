@@ -36,3 +36,4 @@ res*.txt
 tester
 push_swap_visualizer
 push_swap_viz_kivy
+ft_mallocator
