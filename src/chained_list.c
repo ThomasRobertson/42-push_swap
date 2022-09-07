@@ -6,23 +6,26 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 17:08:34 by troberts          #+#    #+#             */
-/*   Updated: 2022/07/17 15:14:53 by troberts         ###   ########.fr       */
+/*   Updated: 2022/09/07 20:08:58 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_list	*create_node(int value)
+t_list	*create_node(int value)
 {
 	t_stack	*node;
 	t_list	*list;
 
 	list = malloc(sizeof(*list));
 	if (list == NULL)
-		exit(EXIT_FAILURE);
+		return (NULL);
 	node = malloc(sizeof(*node));
 	if (node == NULL)
-		exit(EXIT_FAILURE);
+	{
+		free(list);
+		return (NULL);
+	}
 	node->value = value;
 	node->cost_a = -1;
 	node->cost_b = -1;
@@ -51,7 +54,8 @@ t_list	*create_chained_list(int ac, char **av)
 		if (node == NULL)
 		{
 			ft_lstclear(&stack_a, free);
-			return (NULL);
+			free(array);
+			exit(EXIT_FAILURE);
 		}
 		ft_lstadd_back(&stack_a, node);
 	}

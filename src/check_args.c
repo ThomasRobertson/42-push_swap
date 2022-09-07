@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:12:41 by troberts          #+#    #+#             */
-/*   Updated: 2022/09/07 19:24:23 by troberts         ###   ########.fr       */
+/*   Updated: 2022/09/07 19:41:17 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,11 @@ t_bool	check_args(int ac, char **av, int **array_int, unsigned int *size)
 	while (array_char[*size])
 		(*size)++;
 	*array_int = convert_array_to_int(array_char);
+	if (*array_int == NULL)
+	{
+		free_double_ptr_char(array_char);
+		exit(EXIT_FAILURE);
+	}
 	check_duplicate(*array_int, *size, array_char);
 	check_bigger_then_int(array_char);
 	free_double_ptr_char(array_char);
