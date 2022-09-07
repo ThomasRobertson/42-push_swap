@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:12:41 by troberts          #+#    #+#             */
-/*   Updated: 2022/07/26 16:42:34 by troberts         ###   ########.fr       */
+/*   Updated: 2022/09/07 19:24:23 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	check_bigger_then_int(char **array)
 	}
 }
 
-static void	check_duplicate(int *array, unsigned int size)
+static void	check_duplicate(int *array, unsigned int size, char **array_char)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -66,6 +66,7 @@ static void	check_duplicate(int *array, unsigned int size)
 		{
 			free(array);
 			ft_putendl_fd("Error", STDERR_FILENO);
+			free_double_ptr_char(array_char);
 			exit(EXIT_FAILURE);
 		}
 		i++;
@@ -108,7 +109,7 @@ t_bool	check_args(int ac, char **av, int **array_int, unsigned int *size)
 	while (array_char[*size])
 		(*size)++;
 	*array_int = convert_array_to_int(array_char);
-	check_duplicate(*array_int, *size);
+	check_duplicate(*array_int, *size, array_char);
 	check_bigger_then_int(array_char);
 	free_double_ptr_char(array_char);
 	return (true);
