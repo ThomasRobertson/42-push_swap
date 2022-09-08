@@ -6,20 +6,13 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 12:36:01 by troberts          #+#    #+#             */
-/*   Updated: 2022/09/07 20:25:34 by troberts         ###   ########.fr       */
+/*   Updated: 2022/09/07 23:01:34 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static void	do_moves_was_too_long(char *move)
-{
-	ft_putendl_fd("Error", STDERR_FILENO);
-	free(move);
-	exit(EXIT_FAILURE);
-}
-
-static void	do_moves(t_list **stack_a, t_list **stack_b, char *move)
+static int	do_moves(t_list **stack_a, t_list **stack_b, char *move)
 {
 	if (ft_strcmp(move, "sa\n") == 0)
 		sa(stack_a, true);
@@ -44,10 +37,11 @@ static void	do_moves(t_list **stack_a, t_list **stack_b, char *move)
 	else if (ft_strcmp(move, "rrr\n") == 0)
 		rrr(stack_a, stack_b, true);
 	else
-		do_moves_was_too_long(move);
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
 
-static void	get_moves(t_list **stack_a, t_list **stack_b)
+static int	get_moves(t_list **stack_a, t_list **stack_b)
 {
 	char	*line;
 
@@ -56,9 +50,15 @@ static void	get_moves(t_list **stack_a, t_list **stack_b)
 		line = get_next_line(STDIN_FILENO);
 		if (line == NULL)
 			break ;
-		do_moves(stack_a, stack_b, line);
+		if (do_moves(stack_a, stack_b, line) == EXIT_FAILURE)
+		{
+			ft_putendl_fd("Error", STDERR_FILENO);
+			free(line);
+			return (EXIT_FAILURE);
+		}
 		free(line);
 	}
+	return (EXIT_SUCCESS);
 }
 
 int	main(int ac, char **av)
@@ -70,18 +70,18 @@ int	main(int ac, char **av)
 		return (EXIT_SUCCESS);
 	stack_a = create_chained_list(ac, av);
 	stack_b = NULL;
-	get_moves(&stack_a, &stack_b);
-	if (is_stacks_sort(stack_a, stack_b))
+	if (get_moves(&stack_a, &stack_b) == EXIT_SUCCESS)
 	{
-		ft_putstr_fd("OK\n", STDOUT_FILENO);
-		ft_lstclear(&stack_a, free);
-		return (EXIT_SUCCESS);
+		if (is_stacks_sort(stack_a, stack_b))
+		{
+			ft_putstr_fd("OK\n", STDOUT_FILENO);
+			ft_lstclear(&stack_a, free);
+			return (EXIT_SUCCESS);
+		}
+		else
+			ft_putstr_fd("KO\n", STDOUT_FILENO);
 	}
-	else
-	{
-		ft_putstr_fd("KO\n", STDOUT_FILENO);
-		ft_lstclear(&stack_a, free);
-		ft_lstclear(&stack_b, free);
-		return (EXIT_FAILURE);
-	}
+	ft_lstclear(&stack_a, free);
+	ft_lstclear(&stack_b, free);
+	return (EXIT_FAILURE);
 }
