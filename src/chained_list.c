@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 17:08:34 by troberts          #+#    #+#             */
-/*   Updated: 2022/09/07 20:08:58 by troberts         ###   ########.fr       */
+/*   Updated: 2022/09/08 19:42:09 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_list	*create_chained_list(int ac, char **av)
 	int				*array;
 	unsigned int	size;
 
-	check_args(ac, av, &array, &size);
+	array = check_args(ac, av, &size);
 	i = 0;
 	stack_a = NULL;
 	while (i < size)

@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 16:58:26 by troberts          #+#    #+#             */
-/*   Updated: 2022/07/27 11:40:48 by troberts         ###   ########.fr       */
+/*   Updated: 2022/09/08 19:41:33 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef enum e_bool
 }	t_bool;
 
 t_list		*create_chained_list(int ac, char **av);
-t_bool		check_args(int ac, char **av, int **array_int, unsigned int *size);
+int			*check_args(int ac, char **av, unsigned int *size);
 void		create_stack_b(t_list **stack_a, t_list **stack_b);
 
 char		**get_array(int ac, char **av);

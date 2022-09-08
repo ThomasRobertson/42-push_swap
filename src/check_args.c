@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:12:41 by troberts          #+#    #+#             */
-/*   Updated: 2022/09/07 19:41:17 by troberts         ###   ########.fr       */
+/*   Updated: 2022/09/08 19:44:20 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	display_error_message(char **array)
 	exit(EXIT_FAILURE);
 }
 
-static void	check_bigger_then_int(char **array)
+static int	check_bigger_then_int(char **array)
 {
 	size_t	i;
 	size_t	j;
@@ -35,17 +35,18 @@ static void	check_bigger_then_int(char **array)
 		lenght = 0;
 		while (array[i][j])
 		{
-			if (ft_isdigit(array[i][j++]))
+			if (ft_isdigit(array[i][j]) && array[i][j++] != '0')
 				lenght++;
 		}
 		if (lenght > lenght_int || ft_atol(array[i]) > INT_MAX || \
-			ft_atol(array[i]) < INT_MIN)
-			display_error_message(array);
+												ft_atol(array[i]) < INT_MIN)
+			return (EXIT_FAILURE);
 		i++;
 	}
+	return (EXIT_SUCCESS);
 }
 
-static void	check_duplicate(int *array, unsigned int size, char **array_char)
+static int	check_duplicate(int *array, unsigned int size)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -63,14 +64,10 @@ static void	check_duplicate(int *array, unsigned int size, char **array_char)
 			j++;
 		}
 		if (counter != 1)
-		{
-			free(array);
-			ft_putendl_fd("Error", STDERR_FILENO);
-			free_double_ptr_char(array_char);
-			exit(EXIT_FAILURE);
-		}
+			return (EXIT_FAILURE);
 		i++;
 	}
+	return (EXIT_SUCCESS);
 }
 
 static void	check_formats_args(char **array)
@@ -99,23 +96,30 @@ static void	check_formats_args(char **array)
 	}
 }
 
-t_bool	check_args(int ac, char **av, int **array_int, unsigned int *size)
+int	*check_args(int ac, char **av, unsigned int *size)
 {
-	char			**array_char;
+	char	**array_char;
+	int		*array_int;
 
 	array_char = get_array(ac, av);
 	check_formats_args(array_char);
 	*size = 0;
 	while (array_char[*size])
 		(*size)++;
-	*array_int = convert_array_to_int(array_char);
-	if (*array_int == NULL)
+	array_int = convert_array_to_int(array_char);
+	if (array_int == NULL)
 	{
 		free_double_ptr_char(array_char);
 		exit(EXIT_FAILURE);
 	}
-	check_duplicate(*array_int, *size, array_char);
-	check_bigger_then_int(array_char);
+	if (check_duplicate(array_int, *size) == EXIT_FAILURE || \
+		check_bigger_then_int(array_char) == EXIT_FAILURE)
+	{
+		ft_putendl_fd("Error", STDERR_FILENO);
+		free(array_int);
+		free_double_ptr_char(array_char);
+		exit(EXIT_FAILURE);
+	}
 	free_double_ptr_char(array_char);
-	return (true);
+	return (array_int);
 }
