@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 05:18:57 by troberts          #+#    #+#             */
-/*   Updated: 2022/04/19 21:52:21 by troberts         ###   ########.fr       */
+/*   Updated: 2022/09/09 18:19:04 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	ft_atoi(const char *nptr)
 			signe = -1;
 		i++;
 	}
+	while (nptr[i] == '0')
+		i++;
 	while (ft_isdigit(nptr[i]))
 	{
 		nbr = nbr * 10 + (nptr[i] - '0');
