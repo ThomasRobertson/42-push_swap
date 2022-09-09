@@ -6,7 +6,7 @@
 #    By: troberts <troberts@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 01:33:16 by troberts          #+#    #+#              #
-#    Updated: 2022/07/11 16:39:38 by troberts         ###   ########.fr        #
+#    Updated: 2022/09/09 18:07:02 by troberts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -173,8 +173,6 @@ HEADER_NORM =		@echo "${COLOR_PURPLE}\
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(HEADER)
-	$(HEADER_LIBRARY)
 	@$(AR) $(ARARCH) $@ $^
 	@$(AR) $(ARINDEX) $@
 
@@ -190,16 +188,14 @@ header:
 	$(HEADER)
 
 cleanobj:
-	${HEADER_CLEAN}
 	@rm -f $(OBJ)
 
 cleanobjdir: cleanobj
 	@rm -rf $(OBJ_DIR)
 
-clean: header cleanobjdir
+clean: cleanobjdir
 	
-fclean: header clean
-	${HEADER_FCLEAN}
+fclean: clean
 	@rm -f $(NAME)
 
 norm: header
@@ -210,6 +206,6 @@ norm: header
 	norminette $(INCLUDES) | awk "!/: OK!/"
 	@echo "$(COLOR_END)"
 
-re: header fclean all
+re: fclean all
 
 .PHONY: all clean fclean re norm header cleanobj cleanobjdir

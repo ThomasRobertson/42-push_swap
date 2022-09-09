@@ -6,7 +6,7 @@
 #    By: troberts <troberts@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 01:33:16 by troberts          #+#    #+#              #
-#    Updated: 2022/09/07 19:28:52 by troberts         ###   ########.fr        #
+#    Updated: 2022/09/09 18:08:25 by troberts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -140,7 +140,6 @@ all: $(NAME)
 
 $(NAME): $(LIBFT_LIB) $(OBJ) $(OBJ_COMMON)
 	$(HEADER)
-	$(HEADER_COMPIL)
 	$(CC) $(CFLAGS) -o $@ $(OBJ) $(OBJ_COMMON) $(LIBFT_LIB)
 
 malloc_test: $(LIBFT_LIB) $(OBJ) $(OBJ_COMMON)
@@ -152,7 +151,6 @@ bonus: $(NAME_BONUS)
 
 $(NAME_BONUS): $(LIBFT_LIB) $(OBJ_COMMON) $(OBJ_BONUS)
 	$(HEADER)
-	$(HEADER_COMPIL)
 	$(CC) $(CFLAGS) -o $@ $(OBJ_COMMON) $(OBJ_BONUS) $(LIBFT_LIB)
 
 makelibf :
@@ -182,13 +180,12 @@ header:
 	$(HEADER)
 
 cleanobj:
-	${HEADER_CLEAN}
 	rm -f $(OBJ) $(OBJ_BONUS) $(OBJ_COMMON)
 
 cleanobjdir: cleanobj
 	rm -rf $(OBJ_DIR)
 
-clean: header cleanobjdir cleanlibft
+clean: cleanobjdir cleanlibft
 	
 cleanlibft:
 	make -C $(LIBFT_DIR) clean
@@ -197,8 +194,7 @@ fcleanlibft:
 	make -C $(LIBFT_DIR) fclean
 	rm -f libft.a
 
-fclean: header clean fcleanlibft
-	${HEADER_FCLEAN}
+fclean: clean fcleanlibft
 	rm -f $(NAME) $(NAME_BONUS)
 
 re: header fclean all
