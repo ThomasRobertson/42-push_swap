@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:12:41 by troberts          #+#    #+#             */
-/*   Updated: 2022/09/08 19:44:20 by troberts         ###   ########.fr       */
+/*   Updated: 2022/09/12 19:40:34 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,24 @@ static int	check_bigger_then_int(char **array)
 {
 	size_t	i;
 	size_t	j;
-	size_t	lenght_int;
 	size_t	lenght;
 
 	i = 0;
 	j = 0;
-	lenght_int = 10;
 	while (array[i])
 	{
 		j = 0;
 		lenght = 0;
-		while (array[i][j])
+		if (array[i][j] == '+' || array[i][j] == '-')
+			j++;
+		while (array[i][j] == '0')
+			j++;
+		while (ft_isdigit(array[i][j]))
 		{
-			if (ft_isdigit(array[i][j]) && array[i][j++] != '0')
-				lenght++;
+			lenght++;
+			j++;
 		}
-		if (lenght > lenght_int || ft_atol(array[i]) > INT_MAX || \
+		if (lenght > LEN_INT || ft_atol(array[i]) > INT_MAX || \
 												ft_atol(array[i]) < INT_MIN)
 			return (EXIT_FAILURE);
 		i++;
