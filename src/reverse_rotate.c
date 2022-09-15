@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 12:39:37 by troberts          #+#    #+#             */
-/*   Updated: 2022/07/27 02:52:39 by troberts         ###   ########.fr       */
+/*   Updated: 2022/09/15 20:34:25 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void	reverse_rotate(t_list **stack)
 	if (*stack == NULL || stack == NULL)
 		return ;
 	node = *stack;
+	if (node->next == NULL)
+		return ;
 	while (node->next->next != NULL)
 		node = node->next;
 	ft_lstadd_front(stack, node->next);
